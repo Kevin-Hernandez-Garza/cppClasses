@@ -21,7 +21,7 @@ class Population
     // private and public specifiers
 private:
     // declaring member variables
-    int population, births, deaths;
+    int population = 2, births = 0, deaths = 0;
 
 public:
     // birth rate function
