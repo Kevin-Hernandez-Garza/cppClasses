@@ -9,11 +9,36 @@
 // This program gathers information on the current population, annual births, deaths for a geographical area by implement a C++ class.
 //  ******************************************************************
 
+// directives
 #include <iostream>
 #include <string>
 
 using namespace std;
 
+// class declaration
+class Population
+{
+    // private and public specifiers
+private:
+    // declaring member variables
+    int population, births, deaths;
+
+public:
+    // birth rate function
+    int getBirthrate(int births, int population)
+    {
+        int birthrate;
+        birthrate = births / population;
+    }
+    // death rate function
+    int getDeathrate(int deaths, int population)
+    {
+        int deathrate;
+        deathrate = deaths / population;
+    }
+};
+
+// main function
 int main()
 {
 
