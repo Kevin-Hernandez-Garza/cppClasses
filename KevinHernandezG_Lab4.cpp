@@ -28,47 +28,63 @@ public:
     void setPopulation(int);
     void setBirthrate(int);
     void setDeathrate(int);
+    // birthrate member function
+    int getBirthrate(int births, int population);
 
-    // birthrate member inline function
-    int getBirthrate(int births, int population)
-    {
-        int birthrate;
-        birthrate = births / population;
-    }
-    // deathrate member inline function
-    int getDeathrate(int deaths, int population)
-    {
-        int deathrate;
-        deathrate = deaths / population;
-    }
+    // deathrate member function
+    int getDeathrate(int deaths, int population);
 };
 
-// set functions incase invalid informations is passed
-void Population::setPopulation(int population)
+// member functions
+void Population::setPopulation(int x)
 {
-    if (population < 2)
+    if (population > 2)
+    {
+        population = x;
+    }
+    else
     {
         population = 2;
         cout << "Error: Invalid population input!" << endl;
     }
 };
 
-void Population::setBirthrate(int births)
+void Population::setBirthrate(int y)
 {
-    if (births < 0)
+    if (births > 0)
+    {
+        births = y;
+    }
+    else
     {
         births = 0;
         cout << "Error: Invalid births input!" << endl;
     }
 }
 
-void Population::setDeathrate(int deaths)
+void Population::setDeathrate(int z)
 {
-    if (deaths < 0)
+    if (deaths > 0)
+    {
+        deaths = z;
+    }
+    else
     {
         deaths = 0;
         cout << "Error: Invalid deaths input!" << endl;
     }
+}
+
+int Population::getBirthrate(int births, int population)
+{
+    int birthrate;
+    birthrate = births / population;
+}
+
+int Population::getDeathrate(int deaths, int population)
+{
+    int deathrate;
+    int deathrate = deaths / population;
 }
 
 // main function
