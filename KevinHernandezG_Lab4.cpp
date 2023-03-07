@@ -12,35 +12,65 @@
 // directives
 #include <iostream>
 #include <string>
-
 using namespace std;
 
-// instantiating the Population class
+//  Population class declaration
 class Population
 {
-    // private and public specifiers
 private:
-    // declaring member variables
     int population, births, deaths;
 
 public:
-    // setting variables depending on input
-    void setPopulation(int);
-    void setBirthrate(int);
-    void setDeathrate(int);
-    // birthrate member function
-    int getBirthrate(int births, int population);
+    // default constructor: with no parameters
+    Population()
+    {
+        population = 2;
+        births = 0;
+        deaths = 0;
+    };
 
+    // constructor
+    Population(int p, int b, int d)
+    {
+        population = p;
+        births = b;
+        deaths = d;
+    };
+
+    // birthrate member function
+    int getBirthrate();
     // deathrate member function
-    int getDeathrate(int deaths, int population);
+    int getDeathrate();
+
+    void setPopulation(int);
+    void setBirth(int);
+    void setDeath(int);
+    int getPopulation();
+    int getBirth(int);
+    int getDeaths(int);
 };
 
+// calculating functions
+int Population::getBirthrate()
+{
+    int birthrate;
+    birthrate = births / population;
+    return birthrate;
+}
+
+int Population::getDeathrate()
+{
+    int deathrate;
+    deathrate = deaths / population;
+    return deathrate;
+}
+
 // member functions
-void Population::setPopulation(int x)
+void Population::setPopulation(int p)
 {
     if (population > 2)
     {
-        population = x;
+        population = p;
     }
     else
     {
@@ -49,11 +79,11 @@ void Population::setPopulation(int x)
     }
 };
 
-void Population::setBirthrate(int y)
+void Population::setBirth(int b)
 {
-    if (births > 0)
+    if (births >= 0)
     {
-        births = y;
+        births = b;
     }
     else
     {
@@ -62,11 +92,11 @@ void Population::setBirthrate(int y)
     }
 }
 
-void Population::setDeathrate(int z)
+void Population::setDeath(int d)
 {
-    if (deaths > 0)
+    if (deaths >= 0)
     {
-        deaths = z;
+        deaths = d;
     }
     else
     {
@@ -75,21 +105,48 @@ void Population::setDeathrate(int z)
     }
 }
 
-int Population::getBirthrate(int births, int population)
+int Population::getPopulation()
 {
-    int birthrate;
-    birthrate = births / population;
+    return population;
 }
 
-int Population::getDeathrate(int deaths, int population)
+int Population::getBirth(int)
 {
-    int deathrate;
-    int deathrate = deaths / population;
+    return births;
+}
+
+int Population::getDeaths(int)
+{
+    return deaths;
 }
 
 // main function
 int main()
 {
+    // instantiation of a population object
+    Population x;
+
+    int xBirths, xDeaths, xPopulation;
+
+    // getting the values
+    cout << "What is the population: " << endl;
+    cin >> xPopulation;
+
+    cout << "What is the number of births: " << endl;
+    cin >> xBirths;
+
+    cout << "What are the number of deaths: " << endl;
+    cin >> xDeaths;
+
+    // set functions
+    x.setPopulation(xPopulation);
+    x.setBirth(xBirths);
+    x.setDeath(xDeaths);
+
+    // calculating the values
+    cout << "The population is: " << x.getPopulation() << endl;
+    cout << "The birthrate is: " << x.getBirthrate() << endl;
+    cout << "The deathrate is: " << x.getDeathrate() << endl;
 
     return 0;
 }
