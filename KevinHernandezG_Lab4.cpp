@@ -39,9 +39,9 @@ public:
     }
 
     // birthrate member function
-    int getBirthrate();
+    double getBirthrate();
     // deathrate member function
-    int getDeathrate();
+    double getDeathrate();
 
     void setPopulation(int);
     void setBirth(int);
@@ -107,14 +107,14 @@ int Population::getDeaths(int)
 }
 
 // calculating functions
-int Population::getBirthrate()
+double Population::getBirthrate()
 {
-    return (births * 1.0) / population;
+    return (double)births / (double)population;
 }
 
-int Population::getDeathrate()
+double Population::getDeathrate()
 {
-    return deaths / population;
+    return (double)deaths / (double)population;
 }
 
 // main function
