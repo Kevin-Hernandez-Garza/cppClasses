@@ -12,6 +12,7 @@
 // directives
 #include <iostream>
 #include <string>
+#include <iomanip>
 using namespace std;
 
 //  Population class declaration
@@ -27,7 +28,7 @@ public:
         population = 2;
         births = 0;
         deaths = 0;
-    };
+    }
 
     // constructor
     Population(int p, int b, int d)
@@ -35,7 +36,7 @@ public:
         population = p;
         births = b;
         deaths = d;
-    };
+    }
 
     // birthrate member function
     int getBirthrate();
@@ -50,58 +51,43 @@ public:
     int getDeaths(int);
 };
 
-// calculating functions
-int Population::getBirthrate()
-{
-    int birthrate;
-    birthrate = births / population;
-    return birthrate;
-}
-
-int Population::getDeathrate()
-{
-    int deathrate;
-    deathrate = deaths / population;
-    return deathrate;
-}
-
 // member functions
 void Population::setPopulation(int p)
 {
-    if (population > 2)
-    {
-        population = p;
-    }
-    else
+    if (population < 2)
     {
         population = 2;
         cout << "Error: Invalid population input!" << endl;
     }
-};
+    else
+    {
+        population = p;
+    }
+}
 
 void Population::setBirth(int b)
 {
-    if (births >= 0)
-    {
-        births = b;
-    }
-    else
+    if (births < 0)
     {
         births = 0;
         cout << "Error: Invalid births input!" << endl;
+    }
+    else
+    {
+        births = b;
     }
 }
 
 void Population::setDeath(int d)
 {
-    if (deaths >= 0)
-    {
-        deaths = d;
-    }
-    else
+    if (deaths < 0)
     {
         deaths = 0;
         cout << "Error: Invalid deaths input!" << endl;
+    }
+    else
+    {
+        deaths = d;
     }
 }
 
@@ -118,6 +104,17 @@ int Population::getBirth(int)
 int Population::getDeaths(int)
 {
     return deaths;
+}
+
+// calculating functions
+int Population::getBirthrate()
+{
+    return (births * 1.0) / population;
+}
+
+int Population::getDeathrate()
+{
+    return deaths / population;
 }
 
 // main function
